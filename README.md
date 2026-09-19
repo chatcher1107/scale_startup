@@ -12,7 +12,7 @@ The demo runs on a fictional customer, **Cameron Coffee Co.** (8 coffee shops ac
 
 ## Try it in 10 seconds (no setup)
 
-**Open the live demo: `PASTE-YOUR-VERCEL-LINK-HERE`**
+**Open the live demo: [scale-startup-jet.vercel.app](https://scale-startup-jet.vercel.app)**
 
 It works in any browser with nothing to install. On the home screen, click **▶ Guided demo** for a 3-minute walkthrough. (Use Chrome or Edge if you want to talk to the AI guest by voice. Typing works everywhere.)
 
