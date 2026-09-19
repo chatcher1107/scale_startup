@@ -49,6 +49,12 @@ cd scale_startup
 ### Optional: turn on live AI
 Skip this to run in mock mode (see below). To use a real AI guest, copy `.env.example` to `.env.local` (`Copy-Item .env.example .env.local` in PowerShell, or `cp .env.example .env.local` on macOS/Linux), paste your key after `OPENAI_API_KEY=`, and restart the app.
 
+**Where to get a key**
+- **Duke students and staff:** the Duke community can create an API key through Duke's AI Gateway. Follow [Duke OIT's guide](https://oit.duke.edu/help/articles/kb0038824/): open the **AI Gateway** section of the AI Dashboard, click **Create API key**, and give it a nickname. A Duke fund code is optional. Without one, you get a daily request limit that varies by model, and you can only create one key. With one, requests are billed at cost to that fund code.
+- **Everyone else:** create a key at [platform.openai.com](https://platform.openai.com).
+
+Seasoned expects an OpenAI-style chat API. Duke's guide doesn't list the gateway's endpoint or models, so if the AI Dashboard shows a different endpoint URL for your key, also set `OPENAI_BASE_URL` (and `OPENAI_MODEL` to a model your key can use) in `.env.local`. If the AI service ever fails or you hit a daily limit, the app falls back to mock mode instead of breaking.
+
 ### No API key? It still works
 Without a key, the app runs in **mock mode**: the AI guest gives scripted replies and grading uses keyword matching. Everything else (dashboards, certification, the tour) behaves the same. To check which mode you are in, open **☰ → About this demo**. It says **Live** or **Mock mode**.
 
@@ -69,6 +75,8 @@ Set these in `.env.local` (local) or in your host's settings (Vercel). See [`.en
 | `OPENAI_BASE_URL` | No | Custom OpenAI-compatible endpoint. Default: `https://api.openai.com/v1`. |
 
 **Restart `npm run dev` after changing `.env.local`.** Never commit `.env.local`. It is already git-ignored.
+
+Duke students can get a key from Duke's AI Gateway (see [Where to get a key](#optional-turn-on-live-ai)).
 
 ---
 
