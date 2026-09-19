@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@theme {
+  /* Seasoned plum (sampled from the logo: #681A43) */
+  --color-plum-50: #fbf5f9;
+  --color-plum-100: #f5e8f0;
+  --color-plum-200: #ead0e1;
+  --color-plum-300: #d7a6c3;
+  --color-plum-400: #bd729f;
+  --color-plum-500: #9d4a7b;
+  --color-plum-600: #822f60;
+  --color-plum-700: #681a43;
+  --color-plum-800: #521536;
+  --color-plum-900: #3b0f27;
+
+  /* Cameron Coffee Co. (client brand): Duke-inspired navy */
+  --color-cameron-50: #f3f6fc;
+  --color-cameron-100: #e8edf8;
+  --color-cameron-200: #cfd9ef;
+  --color-cameron-300: #a3b6de;
+  --color-cameron-400: #6f88c6;
+  --color-cameron-500: #3f5fae;
+  --color-cameron-600: #1f3f93;
+  --color-cameron-700: #012169;
+  --color-cameron-800: #011a55;
+  --color-cameron-900: #01133d;
+  --color-cameron-navy: #012169;
+  --color-cameron-blue: #0736a4;
+  --color-cameron-tint: #e8edf8;
+
+  /* Status */
+  --color-good: #1c7c54;
+  --color-good-bg: #e3f4ec;
+  --color-warn: #a86a00;
+  --color-warn-bg: #fdf1d8;
+  --color-bad: #b3261e;
+  --color-bad-bg: #fbe4e2;
+
+  --color-surface: #ffffff;
+  --color-canvas: #f7f5f8;
+  --color-line: #e9e3ec;
+  --color-ink: #1e1521;
+  --color-muted: #6f6475;
+
+  --font-sans: var(--font-carlito), Calibri, ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-carlito), Calibri, ui-sans-serif, system-ui, sans-serif;
+  /* Only the Seasoned wordmark keeps the serif */
+  --font-brand: var(--font-fraunces), Georgia, serif;
+}
+
+html {
+  font-size: 17px; /* Carlito runs small, so bump the base size */
+}
+
+html,
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px rgba(60, 16, 38, 0.04);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.65rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--color-plum-700);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--color-plum-800);
+}
+.btn-ghost {
+  background: #fff;
+  color: var(--color-plum-700);
+  border: 1px solid var(--color-plum-200);
+}
+.btn-ghost:hover {
+  background: var(--color-plum-50);
+}
+.btn-navy {
+  background: var(--color-cameron-700);
+  color: #fff;
+}
+.btn-navy:hover {
+  background: var(--color-cameron-800);
+}
+.btn-ghost-navy {
+  background: #fff;
+  color: var(--color-cameron-700);
+  border: 1px solid var(--color-cameron-200);
+}
+.btn-ghost-navy:hover {
+  background: var(--color-cameron-50);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fadein 0.28s ease both;
+}
+.rise {
+  animation: rise 0.4s ease both;
+}
+
+/* Certificate printing: hide app chrome, print only the certificate */
+@media print {
+  aside,
+  header {
+    display: none !important;
+  }
+  body:has(.print-area) * {
+    visibility: hidden;
+  }
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    inset: 0;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+  @page {
+    size: landscape;
+    margin: 0;
+  }
+}
